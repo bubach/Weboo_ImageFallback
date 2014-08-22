@@ -1,0 +1,40 @@
+<?xml version="1.0" ?><config>
+    <modules>
+        <Weboo_ImageFallback>
+            <version>0.0.1</version>
+        </Weboo_ImageFallback>
+        <depends>
+            <Icommerce_CatalogImageFormat/>
+        </depends>
+    </modules>
+    <global>
+        <helpers>
+            <imagefallback>
+                <class>Weboo_ImageFallback_Helper</class>
+            </imagefallback>
+            <!--
+            Great news everybody! Needs to be done inside an observer to override the Icommerce override.
+            <catalog>
+                <rewrite>
+                    <image>Weboo_ImageFallback_Helper_Image</image>
+                </rewrite>
+            </catalog>
+            -->
+        </helpers>
+        <models>
+            <imagefallback>
+                <class>Weboo_ImageFallback_Model</class>
+            </imagefallback>
+        </models>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <set_helper_rewrite>
+                        <class>imagefallback/observer</class>
+                        <method>setHelperRewrite</method>
+                    </set_helper_rewrite>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </global>
+</config>

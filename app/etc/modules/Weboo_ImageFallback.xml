@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Weboo_ImageFallback>
+            <codePool>community</codePool>
+            <active>true</active>
+        </Weboo_ImageFallback>
+    </modules>
+</config>
