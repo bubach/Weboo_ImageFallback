@@ -1,10 +1,12 @@
-<?xml version="1.0" ?><config>
+<?xml version="1.0" ?>
+<config>
     <modules>
         <Weboo_ImageFallback>
             <version>0.0.1</version>
         </Weboo_ImageFallback>
         <depends>
             <Icommerce_CatalogImageFormat/>
+            <Ridestore_ImageCache/>
         </depends>
     </modules>
     <global>
