@@ -16,11 +16,16 @@ class Weboo_ImageFallback_Model_Product_Image extends Weboo_ImageFallback_Model_
             $path = array('http://cdnx1.ridestore.com/media/catalog/product');
             if((!empty($this->_width)) || (!empty($this->_height))) {
 
+                $storeId = Mage::app()->getStore()->getId();
+                if ('true' == (string)Mage::getConfig()->getNode('modules/Ridestore_ImageCache/active')) {
+                    $storeId = 1;
+                }
+
                 // build filename path
                 $path = array(
                     'http://cdnx1.ridestore.com/media/catalog/product',
                     'cache',
-                    Mage::app()->getStore()->getId(),
+                    $storeId,
                     $path[] = $this->getDestinationSubdir()
                 );
 
