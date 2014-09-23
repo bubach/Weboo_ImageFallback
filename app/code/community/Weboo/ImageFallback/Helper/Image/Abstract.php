@@ -7,7 +7,9 @@
  * Time: 18:32
  */
 
-if ('true' == (string)Mage::getConfig()->getNode('modules/Icommerce_CatalogImageFormat/active')
+if ('true' == (string)Mage::getConfig()->getNode('modules/Ridestore_ImageCache/active')) {
+    class Weboo_ImageFallback_Helper_Image_Abstract extends Ridestore_ImageCache_Helper_Image {}
+} else if ('true' == (string)Mage::getConfig()->getNode('modules/Icommerce_CatalogImageFormat/active')
     && Mage::getStoreConfig('catalogimageformat/settings/rewrite')) {
     class Weboo_ImageFallback_Helper_Image_Abstract extends Icommerce_CatalogImageFormat_Helper_Image {}
 } else {
