@@ -15,8 +15,10 @@ class Weboo_ImageFallback_Helper_Image extends Weboo_ImageFallback_Helper_Image_
             && Mage::getStoreConfig('catalogimageformat/settings/rewrite'))
         {
             $this->_setModel(Mage::getModel('catalogimageformat/product_image'));
-        } else {
+        } else if ('true' == (string)Mage::getConfig()->getNode('modules/Ridestore_ImageCache/active')) {
             $this->_setModel(Mage::getModel('imagecache/product_image'));
+        } else {
+            $this->_setModel(Mage::getModel('catalog/product_image'));
         }
         $this->_getModel()->setDestinationSubdir($attributeName);
         $this->setProduct($product);
