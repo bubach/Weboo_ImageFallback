@@ -11,7 +11,13 @@ class Weboo_ImageFallback_Helper_Image extends Weboo_ImageFallback_Helper_Image_
     public function init(Mage_Catalog_Model_Product $product, $attributeName, $imageFile=null)
     {
         $this->_reset();
-        $this->_setModel(Mage::getModel('imagefallback/product_image'));
+        if ('true' == (string)Mage::getConfig()->getNode('modules/Icommerce_CatalogImageFormat/active')
+            && Mage::getStoreConfig('catalogimageformat/settings/rewrite'))
+        {
+            $this->_setModel(Mage::getModel('catalogimageformat/product_image'));
+        } else {
+            $this->_setModel(Mage::getModel('imagecache/product_image'));
+        }
         $this->_getModel()->setDestinationSubdir($attributeName);
         $this->setProduct($product);
 
